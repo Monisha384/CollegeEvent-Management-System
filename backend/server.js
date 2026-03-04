@@ -12,7 +12,10 @@ const queryRoutes = require("./routes/queryRoutes");
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true
+}));
 app.use(express.json());
 
 // MongoDB Connection
@@ -50,8 +53,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Something went wrong!", error: err.message });
 });
 
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📊 API available at http://localhost:${PORT}/api`);
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`📊 API available at /api`);
 });
