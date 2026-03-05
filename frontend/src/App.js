@@ -17,6 +17,7 @@ import MyQueries from "./pages/MyQueries";
 import ManageQueries from "./pages/ManageQueries";
 import LiveEvent from "./pages/LiveEvent";
 import LiveClasses from "./pages/LiveClasses";
+import ApiTest from "./pages/ApiTest";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create" element={<CreateEvent />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/api-test" element={<ApiTest />} />
       </Routes>
       <Footer />
       <ScrollToTop />
