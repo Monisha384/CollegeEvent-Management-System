@@ -4,8 +4,8 @@ import axios from "axios";
 const getApiUrl = () => {
   // Check if we're in production (Vercel)
   if (window.location.hostname !== 'localhost') {
-    // Use environment variable or fallback to relative path
-    return process.env.REACT_APP_API_URL || '/api';
+    // Use environment variable or fallback to Render backend URL
+    return process.env.REACT_APP_API_URL || 'https://collegeevent-management-system-o7vq.onrender.com/api';
   }
   // Local development
   return "http://localhost:5001/api";
