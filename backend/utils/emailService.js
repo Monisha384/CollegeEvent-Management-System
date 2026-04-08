@@ -9,6 +9,12 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendRegistrationEmail = async (registrationData, eventData) => {
+  // Skip if we don't have real email credentials
+  if (!process.env.EMAIL_USER || process.env.EMAIL_USER === "your-email@gmail.com") {
+    console.log("No real email credentials found, skipping confirmation email...");
+    return { success: false, error: "No credentials" };
+  }
+
   const mailOptions = {
     from: process.env.EMAIL_USER || "College Events <your-email@gmail.com>",
     to: registrationData.email,
